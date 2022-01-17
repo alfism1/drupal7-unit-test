@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Implements hook_libraries_info().
+ */
+function playground_libraries_info()
+{
+  return array(
+    'php-amqplib' => array(
+      'name' => 'PHP Rabbit mq',
+      'vendor url' => 'https://www.rabbitmq.com/',
+      'download url' => 'https://github.com/php-amqplib/php-amqplib',
+      'version' => '>=3.0',
+      'dependencies' => array(),
+      'files' => array(
+        'php' => array(
+          'init.php',
+        ),
+      ),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_node_submit().
+ */
+function playground_node_submit($node, $form, &$form_state)
+{
+  // Decompose the selected menu parent option into 'menu_name' and 'plid', if
+  // the form used the default parent selection widget.
+  if (!empty($form_state['values']['menu']['parent'])) {
+    list($node->menu['menu_name'], $node->menu['plid']) = explode(':', $form_state['values']['menu']['parent']);
+  }
+}
+
+function playground_total($a, $b)
+{
+  return $a + $b;
+}
