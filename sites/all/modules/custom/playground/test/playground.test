@@ -1,0 +1,33 @@
+<?php
+
+class PlaygroundUnitTest extends DrupalUnitTestCase
+{
+  public static function getInfo()
+  {
+    return array(
+      'name' => 'Playground unit tests',
+      'description' => 'Experiment to use Drupal 7 unit test',
+      'group' => 'Playground',
+    );
+  }
+
+  public function testFirstCase()
+  {
+    $result = 'A NULL value should return TRUE.';
+    $message = 'A NULL value should return TRUE.';
+    $this->assertTrue($result, $message);
+    $this->assertIdentical(2, 2, "Check 2 == 3");
+  }
+
+  public function testPlaygroundTotal()
+  {
+    $total = playground_total(2, 3);
+    $this->assertIdentical(5, $total, "Test assertIdentical");
+  }
+
+  public function testError()
+  {
+    $total = playground_total(2, 3);
+    $this->assertEqual(12, $total, "Should return an error!");
+  }
+}
