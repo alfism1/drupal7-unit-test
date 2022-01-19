@@ -2,4 +2,5 @@ name = Playground
 description = Custom module playground
 core = 7.x
 package = Custom
+version=1.0
 files[] = test/playground.test
